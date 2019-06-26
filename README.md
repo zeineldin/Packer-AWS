@@ -9,8 +9,7 @@
 ```AWS_PROFILE=default packer build packer-template.json```
 
 #example of ~/.aws/credentials 
-------------------------------
+
 [default]
 aws_access_key_id = XXXXXXXXXXXX
 aws_secret_access_key = ZZZZZZ+YYYYYYYYYY
-------------------------------
