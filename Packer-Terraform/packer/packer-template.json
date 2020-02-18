@@ -1,15 +1,14 @@
 {
   "variables": {
-#    "aws_access_key": "",
-#    "aws_secret_key": ""
-     "aws_profile": "{{env `default`}}"
-
+    "aws_profile": "{{env `default`}}",
+    "__aws_access_key": "",
+    "__aws_secret_key": ""
   },
   "builders": [{
     "type": "amazon-ebs",
-#    "access_key": "{{user `aws_access_key`}}",
-#    "secret_key": "{{user `aws_secret_key`}}",
-    "profile": "{{ user `aws_profile`}}"
+    "profile": "{{ user `aws_profile`}}",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
     "region": "eu-west-1",
     "source_ami": "ami-08660f1c6fb6b01e7",
     "instance_type": "t2.micro",
@@ -19,7 +18,7 @@
 
 "provisioners": [
 
-        {
+       {
             "type": "file",
             "source": "./index.html",
             "destination": "/tmp/"
@@ -27,13 +26,12 @@
 
         {
             "type": "shell",
-            "inline": "sudo apt-get update"
+            "script": "script.sh"
         },
         {
             "type": "shell",
-            "inline": ["sudo apt-get -y install nginx","sudo cp /tmp/index.html /var/www/html/", "sudo systemctl enable nginx", "sudo systemctl start nginx"]
+            "inline": ["sudo apt-get update", "sudo apt-get -y install nginx","sudo cp /tmp/index.html /var/www/html/", "sudo systemctl enable nginx", "sudo systemctl start nginx"]
         }
 
-      ] 
-
+      ]
 }
