@@ -11,7 +11,7 @@ resource "aws_instance" "Built-with-terraform" {
   ami           = "${var.AMI_ID}"
   instance_type = "t2.micro"
 tags {
-    "Name" = "packer-terraform-instance"
+    Name = "packer-terraform-instance"
   }
 
 
